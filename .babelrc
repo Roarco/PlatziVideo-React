@@ -1,3 +1,5 @@
+//creamos un un objeto con las dependecias que instalamos de babel, es decir los preset
+
 {
     "presets": [
         "@babel/preset-env",
