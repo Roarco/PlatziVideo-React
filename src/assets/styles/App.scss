@@ -1,0 +1,12 @@
+
+/* aqui simplemente vamos a implementar algo que nos permita ver que si funciona */
+
+$color-fondo:green;
+$color-letra: white;
+
+body{
+    margin: 0;
+    background-color: $color-fondo;
+    color: $color-letra;
+}
+

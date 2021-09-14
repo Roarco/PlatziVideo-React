@@ -3,6 +3,7 @@
 */
 const path = require('path');
 const HtmlWwbpackPlugin = require('html-webpack-plugin');
+const MiniCssEtractPlugin = require('mini-css-extract-plugin');
 
 /* creamos un nuevo modulo que vamos a exportar con esta configuracion */
 
@@ -41,6 +42,13 @@ module.exports = {
                     }
                 ]
             },
+            {
+                test:/\.css|.scss$/i,
+                use: [MiniCssEtractPlugin.loader,
+                    "css-loader",
+                    "sass-loader"
+                ]
+            }
         ]
     },
 
@@ -49,6 +57,9 @@ module.exports = {
         new HtmlWwbpackPlugin({
             template: "./public/index.html",
             filename: "./index.html"
+        }),
+        new MiniCssEtractPlugin({
+            filename:"assets/[name].css"
         })
     ]
 
