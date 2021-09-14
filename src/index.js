@@ -7,6 +7,6 @@ import ReactDOM  from "react-dom";
 import HelloWorld from "./components/HelloWorld";
 
 /* con ReactDOM.render empujamos el componente al html */
-ReactDOM.render(< HelloWorld/>, document.getElementById(app));
+ReactDOM.render(< HelloWorld/>, document.getElementById("app"));
 
 
