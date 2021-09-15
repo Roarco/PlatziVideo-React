@@ -1,8 +1,10 @@
 .carousel {
     width: 100%;
     overflow: scroll;
-    padding-left: 55px;
+    padding-left: 15px;
     position: relative;
+    overflow: hidden;
+
 }
 .carousel__container {
     transition:450ms -webkit-transform;
@@ -12,7 +14,6 @@
     white-space: nowrap;
     margin: 70px 0px;
     padding-bottom: 10px;
-
 }
 .carousel__container:hover .carousel-item{
     opacity: 0.3;
