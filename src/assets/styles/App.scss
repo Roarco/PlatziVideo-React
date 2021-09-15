@@ -1,12 +1,12 @@
 
-/* aqui simplemente vamos a implementar algo que nos permita ver que si funciona */
+/* Aqui vamos a implementar los estilos generales */
 
-$color-fondo:green;
-$color-letra: white;
+body {
+    margin: 0px;
+    background-color: #8F57FD;
+    font-family: 'Mulish', sans-serif;
+    }
 
-body{
-    margin: 0;
-    background-color: $color-fondo;
-    color: $color-letra;
+* {
+    box-sizing: border-box;
 }
-

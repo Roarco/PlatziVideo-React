@@ -2,6 +2,7 @@
 react y en algunos casos si usamos componetes stateFul tambien usaremos el component de
 react */
 import React from 'react';
+import '../assets/styles/components/Header.scss';
 
 /* crearemos componentes presentacionales, con un return explicito*/
 const Header = () => (
