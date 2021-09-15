@@ -4,9 +4,9 @@ componetes o archivos que requiera nuesta aplicacion.
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import HelloWorld from './components/HelloWorld';
+import App from './containers/App';
 import './assets/styles/App.scss';
 
 /* con ReactDOM.render empujamos el componente al html */
-ReactDOM.render(<HelloWorld />, document.getElementById('app'));
+ReactDOM.render(<App />, document.getElementById('app'));
 
