@@ -8,29 +8,20 @@ para  asi tener un contenedor principal con cada,
 uno de ellos
 */
 
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Header from '../components/Header';
 import Search from '../components/Search';
 import Categories from '../components/Categories';
 import Carousel from '../components/Carousel';
 import CarouselItem from '../components/CarouselItem';
 import Footer from '../components/Footer';
+import useInitialState from '../hooks/useInitialState';
 import '../assets/styles/App.scss';
 
-const App = () => {
-  //useState
-  const [videos, setVideos] = useState({
-    mylist: [],
-    trends: [],
-    originals: [],
-  }) ;
+const API = 'http://localhost:3000/initalState';
 
-  //useEffect
-  useEffect(() => {
-    fetch('http://localhost:3000/initalState')
-      .then((response) => response.json())
-      .then((data) => setVideos(data));
-  }, []);
+const App = () => {
+  const initalState = useInitialState(API);
 
   return (
     <div className='app'>
@@ -40,10 +31,12 @@ const App = () => {
       elemento no se muestre en pantalla
        */}
       {
-        videos.mylist.length > 0 && (
+        initalState.mylist.length > 0 && (
           <Categories title='Mi Lista'>
             <Carousel>
-              <CarouselItem />
+              {
+                initalState.mylist.map((item) => <CarouselItem key={item.id} {...item} />)
+              }
             </Carousel>
           </Categories>
         )
@@ -55,14 +48,18 @@ const App = () => {
       <Categories title='Tendencias'>
         <Carousel>
           {
-            videos.trends.map((item) => <CarouselItem key={item.id} {...item} />)
+            initalState.trends.map((item) => <CarouselItem key={item.id} {...item} />)
           }
         </Carousel>
       </Categories>
-
+      {/* vamos hacer que la categoria de Originales de platzi video tenga un llamado por cada uno de los items
+      para asi poder iterar y poder mostrar la informacion en cada uno de estos.
+      */}
       <Categories title='Originales de Platzi Video'>
         <Carousel>
-          <CarouselItem />
+          {
+            initalState.originals.map((item) => <CarouselItem key={item.id} {...item} />)
+          }
         </Carousel>
       </Categories>
 
