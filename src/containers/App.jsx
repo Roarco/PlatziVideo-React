@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-props-no-spreading */
 /* este archivo es una mejor forma de trabajar nuestros componetentes,
 ya que aqui los estamos conteniendo en un contenedor
 */
@@ -18,7 +19,11 @@ import '../assets/styles/App.scss';
 
 const App = () => {
   //useState
-  const [videos, setVideos] = useState([]) ;
+  const [videos, setVideos] = useState({
+    mylist: [],
+    trends: [],
+    originals: [],
+  }) ;
 
   //useEffect
   useEffect(() => {
@@ -26,41 +31,37 @@ const App = () => {
       .then((response) => response.json())
       .then((data) => setVideos(data));
   }, []);
-  console.log(videos);
 
   return (
     <div className='app'>
       <Header />
       <Search />
+      {/*Vamos a crear una validacion para el caso en el que si mi lista no tiene ningun
+      elemento no se muestre en pantalla
+       */}
+      {
+        videos.mylist.length > 0 && (
+          <Categories title='Mi Lista'>
+            <Carousel>
+              <CarouselItem />
+            </Carousel>
+          </Categories>
+        )
+      }
 
-      <Categories title='Mi Lista'>
-        <Carousel>
-          <CarouselItem />
-          <CarouselItem />
-          <CarouselItem />
-          <CarouselItem />
-          <CarouselItem />
-          <CarouselItem />
-          <CarouselItem />
-        </Carousel>
-      </Categories>
-
+      {/* vamos hacer que la categoria de tendencias tenga un llamado por cada uno de los items
+      para asi poder iterar y poder mostrar la informacion en cada uno de estos.
+      */}
       <Categories title='Tendencias'>
         <Carousel>
-          <CarouselItem />
-          <CarouselItem />
-          <CarouselItem />
-          <CarouselItem />
-          <CarouselItem />
+          {
+            videos.trends.map((item) => <CarouselItem key={item.id} {...item} />)
+          }
         </Carousel>
       </Categories>
 
       <Categories title='Originales de Platzi Video'>
         <Carousel>
-          <CarouselItem />
-          <CarouselItem />
-          <CarouselItem />
-          <CarouselItem />
           <CarouselItem />
         </Carousel>
       </Categories>
