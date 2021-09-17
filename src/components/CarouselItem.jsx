@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import '../assets/styles/components/CarouselItem.scss';
 import playIcon from '../assets/static/icons-play.png';
 import plusIcon from '../assets/static/icons-plus.png';
@@ -22,5 +23,18 @@ const CarouselItem = ({ cover, title, year, contentRating, duration }) => (
     </div>
   </div>
 );
+
+/* vamos a validar con PropTypes que tipo de datos reciben nuestras props
+hay que tener presente que no se puede llamar de igual forma(PropTypes),
+se tiene que llamar asi (propTypes) por que sino nos manda un error.
+*/
+
+CarouselItem.propTypes = {
+  cover: PropTypes.string,
+  title: PropTypes.string,
+  year: PropTypes.number,
+  contentRating: PropTypes.string,
+  duration: PropTypes.number,
+};
 
 export default CarouselItem;
